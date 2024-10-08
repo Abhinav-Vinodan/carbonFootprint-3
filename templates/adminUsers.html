@@ -1,0 +1,57 @@
+{% extends "adminBase.html" %} {% block content %}
+
+<main id="main">
+	<!-- ======= Breadcrumbs ======= -->
+	<div
+		class="breadcrumbs d-flex align-items-center"
+		style="background-image: url('assets/img/breadcrumbs-bg.jpg')"
+	>
+		<div
+			class="container position-relative d-flex flex-column align-items-center"
+			data-aos="fade"
+		>
+			<!-- <h2>Pump</h2> -->
+			<h2>Users</h2>
+		</div>
+	</div>
+	<!-- End Breadcrumbs -->
+
+	<!-- ======= Contact Section ======= -->
+	<section id="contact" class="contact">
+		<div class="container" data-aos="fade-up" data-aos-delay="100">
+			<div class="row gy-4 mt-3">
+				<div class="col-lg-12" style="margin: auto">
+					<h3 class="text-center">Registered Users</h3>
+					<table
+						class="table table-secondary table-striped table-hover text-center"
+					>
+						<tr>
+							<th>Registration ID.</th>
+							<th>Owner</th>
+							<th>Email</th>
+							<th>Phone</th>
+							<th>Address</th>
+							<th>Emission</th>
+						</tr>
+						{% for d in data %}
+						<tr>
+							<td>{{d.id}}</td>
+							<td>{{d.name}}</td>
+							<td>{{d.email}}</td>
+							<td>{{d.phone}}</td>
+							<td>{{d.address}}</td>
+							<td>
+								<a href="/adminViewEmission?id={{d.id}}" class="btn btn-primary">View Emission</a>
+							</td>
+						</tr>
+						{% endfor %}
+					</table>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Contact Section -->
+</main>
+<!-- End #main -->
+
+{% endblock %}

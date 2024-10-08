@@ -1,0 +1,52 @@
+{% extends "userBase.html" %} {% block content %}
+<main id="main">
+	<!-- ======= Breadcrumbs ======= -->
+	<div
+		class="breadcrumbs d-flex align-items-center"
+		style="background-image: url('assets/img/breadcrumbs-bg.jpg')"
+	>
+		<div
+			class="container position-relative d-flex flex-column align-items-center"
+			data-aos="fade"
+		>
+			<h2>Chats</h2>
+		</div>
+	</div>
+	<!-- End Breadcrumbs -->
+
+	<!-- ======= Contact Section ======= -->
+	<section id="contact" class="contact">
+		<div class="container" data-aos="fade-up" data-aos-delay="100">
+			<div class="row gy-4 mt-1">
+				<table
+						class="table table-secondary table-striped table-hover text-center"
+					>
+						<tr>
+							<th>Client</th>
+							<th>Chat</th>
+						</tr>
+						{% for c in chats %}
+							{% for d in exps %}
+							{% if c == d.id %}
+							<tr>
+								<td>
+									{{d.name}}
+								</td>
+								<td>
+									<a href="/userChat?id={{d.id}}&url=userChats" class="btn btn-warning">Chat</a>
+								</td>
+							</tr>
+							{% endif %}
+							{% endfor %}
+						{% endfor %}
+					</table>
+				<!-- End Contact Form -->
+			</div>
+		</div>
+	</section>
+	<!-- End Contact Section -->
+</main>
+<!-- End #main -->
+
+<!-- ======= Footer ======= -->
+{% endblock %}

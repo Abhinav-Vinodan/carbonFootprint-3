@@ -1,0 +1,90 @@
+{% extends 'userBase.html' %} {% block content %}
+  <style>
+    .result {
+      border-radius: 50px;
+      background: #fafafa;
+      box-shadow: 20px 20px 39px #d5d5d5, -20px -20px 39px #ffffff;
+      width: 500px;
+      height: 500px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: auto;
+      margin-top: 20px;
+      margin-bottom: 50px;
+    }
+  </style>
+  <main id="main">
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs d-flex align-items-center" style="background-image: url('assets/img/breadcrumbs-bg.jpg')">
+      <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
+        <h2>Device</h2>
+        <h2>Carbon Emission Calculation</h2>
+      </div>
+    </div>
+    <!-- End Breadcrumbs -->
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row gy-4 mt-1">
+          <div class="col-lg-6" style="margin: auto">
+            {% if data %}
+              <div class="result">
+                <h1 class="text-center">
+                  <br />
+                  The estimated carbon footprint of the device is: <br /> <span class="text-primary">{{ data }} kgCO2e</span> <br>
+                  Charge: <span class="text-primary">{{charge}}</span>
+                </h1>
+              </div>
+            {% endif %}
+            <form action="" method="post">
+              {% csrf_token %}
+              <div class="row gy-4 mb-3">
+                <div class="col-lg-12 form-group">
+                  <select name="cat" class="form-control" id="name" required />
+					<option value="" selected disabled>Select Device</option>
+					{% for c in cats %}
+						<option value="{{c.id}}">{{c.cat}}</option>
+					{% endfor %}
+				  </select>
+                </div>
+              </div>
+              <div class="row gy-4 mb-3">
+                <div class="col-lg-12 form-group">
+                  <input type="number" name="device_power" class="form-control" id="name" min="0" placeholder="Power consumption of the device in watts" required />
+                </div>
+              </div>
+              <div class="row gy-4 mb-3">
+                <div class="col-lg-12 form-group">
+                  <input type="number" class="form-control" name="hours_per_day" id="email" min="0" placeholder="Average hours of usage per day" required />
+                </div>
+              </div>
+              <div class="row gy-4 mb-3">
+                <div class="col-lg-12 form-group">
+                  <input type="number" class="form-control" name="no_of_devices" id="email" min="0" placeholder="Number of devices" required />
+                </div>
+              </div>
+              <div class="row gy-4 mb-3">
+                <div class="col-lg-12 form-group">
+                  <input type="number" class="form-control" name="lifespan_years" id="email" min="0" placeholder="Lifespan of the device in years" required />
+                </div>
+              </div>
+              <div class="my-3 mb-3">
+                <div class="error-message"></div>
+              </div>
+              <div class="text-center">
+                <button type="submit" name="submit" class="btn btn-warning">Calculate</button>
+              </div>
+            </form>
+          </div>
+          <!-- End Contact Form -->
+        </div>
+      </div>
+    </section>
+    <!-- End Contact Section -->
+  </main>
+  <!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+{% endblock %}

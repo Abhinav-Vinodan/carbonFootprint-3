@@ -1,0 +1,75 @@
+{% extends "userBase.html" %} {% block content %}
+<style>
+	ul{
+		list-style: none;
+	}
+</style>
+<main id="main">
+	<!-- ======= Breadcrumbs ======= -->
+	<div
+		class="breadcrumbs d-flex align-items-center"
+		style="background-image: url('assets/img/breadcrumbs-bg.jpg')"
+	>
+		<div
+			class="container position-relative d-flex flex-column align-items-center"
+			data-aos="fade"
+		>
+			<h2>Experts</h2>
+		</div>
+	</div>
+	<!-- End Breadcrumbs -->
+
+	<!-- ======= Contact Section ======= -->
+	<section id="contact" class="contact">
+		<div class="w3-services-grids py-lg-4 text-center" style="padding: 20px;">
+			<div class="fea-gd-vv row">
+				{% for i in data %}
+				<div class="col-lg-4 col-md-7" style="margin-bottom: 30px">
+					<div class="feature-gd icon-yellow">
+						<div class="icon">
+							<a href="/static/media/{{i.proof}}" target="_blank"
+								><img
+									src="/static/media/{{i.proof}}"
+									style="
+										height: 200px;
+										width: 200px;
+										padding-right: 26px;
+										padding-bottom: 5px;
+									"
+									title="Before Edit"
+							/></a>
+						</div>
+						<div class="info" style="margin-top: 50px">
+							<h3>{{i.name}}</h3>
+							<h3>Qualification.{{i.qual}}</h3>
+							<h3>{{i.email}}</h3>
+							<hr>
+							<ul>
+								<li class="cary-li-w3-agileits">
+									<div class="snipcart-details top_brand_home_details">
+										<form action="#" method="post">
+											<fieldset>
+												<a href="/userChat?id={{i.id}}&url=userExperts"
+													><input
+														type="button"
+														name="submit"
+														value="Chat"
+														class="btn btn-warning"
+												/></a>
+											</fieldset>
+										</form>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+	<!-- End Contact Section -->
+</main>
+<!-- End #main -->
+
+{% endblock %}

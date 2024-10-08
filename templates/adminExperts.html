@@ -1,0 +1,89 @@
+{% extends "adminBase.html" %} {% block content %}
+
+<main id="main">
+	<!-- ======= Breadcrumbs ======= -->
+	<div
+		class="breadcrumbs d-flex align-items-center"
+		style="background-image: url('assets/img/breadcrumbs-bg.jpg')"
+	>
+		<div
+			class="container position-relative d-flex flex-column align-items-center"
+			data-aos="fade"
+		>
+			<h2>Experts</h2>
+		</div>
+	</div>
+	<!-- End Breadcrumbs -->
+
+	<!-- ======= Contact Section ======= -->
+	<section id="contact" class="contact">
+		<div class="container" data-aos="fade-up" data-aos-delay="100">
+			<div class="row gy-4 mt-3">
+				<div class="col-lg-12" style="margin: auto">
+					<h3 class="text-center">Active Experts</h3>
+					<table
+						class="table table-secondary table-striped table-hover text-center"
+					>
+						<tr>
+							<th>Registration ID.</th>
+							<th>Name</th>
+							<th>Email</th>
+							<th>Phone</th>
+							<th>Address</th>
+							<th>Aadhar</th>
+							<th>Qualification</th>
+							<th>Proof</th>
+							<th>Action</th>
+						</tr>
+						{% for d in data %}
+						<tr>
+							<td>{{d.id}}</td>
+							<td>{{d.name}}</td>
+							<td>{{d.email}}</td>
+							<td>{{d.phone}}</td>
+							<td>{{d.address}}</td>
+							<td>{{d.aadhar}}</td>
+							<td>{{d.qual}}</td>
+							<td><a href="/static/media/{{d.proof}}" target="_blank"><img src="/static/media/{{d.proof}}" width="200" alt=""></a></td>
+							<td><a href="/adminUpdateExperts?id={{d.user.id}}&status=0" class="btn btn-danger">Make Inactive</a></td>
+						</tr>
+						{% endfor %}
+					</table>
+					<h3 class="text-center">Inactive Experts</h3>
+					<table
+						class="table table-secondary table-striped table-hover text-center"
+					>
+						<tr>
+							<th>Registration ID.</th>
+							<th>Name</th>
+							<th>Email</th>
+							<th>Phone</th>
+							<th>Address</th>
+							<th>Aadhar</th>
+							<th>Qualification</th>
+							<th>Proof</th>
+							<th>Action</th>
+						</tr>
+						{% for d in dataIn %}
+						<tr>
+							<td>{{d.id}}</td>
+							<td>{{d.name}}</td>
+							<td>{{d.email}}</td>
+							<td>{{d.phone}}</td>
+							<td>{{d.address}}</td>
+							<td>{{d.aadhar}}</td>
+							<td>{{d.qual}}</td>
+							<td><a href="/static/media/{{d.proof}}" target="_blank"><img src="/static/media/{{d.proof}}" width="200" alt=""></a></td>
+							<td><a href="/adminUpdateExperts?id={{d.user.id}}&status=1" class="btn btn-success">Make Active</a></td>
+						</tr>
+						{% endfor %}
+					</table>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Contact Section -->
+</main>
+<!-- End #main -->
+
+{% endblock %}
